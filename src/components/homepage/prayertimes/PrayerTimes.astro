@@ -1,0 +1,161 @@
+<section class="prayer-times">
+  <div class="prayer-grid" id="prayerGrid">
+    <div class="prayer-card">
+      <h3>Fajr</h3>
+      <p class="prayer-time" data-prayer="fajr">--:--</p>
+    </div>
+
+    <div class="prayer-card">
+      <h3>Sunrise</h3>
+      <p class="prayer-time" data-prayer="sunrise">--:--</p>
+    </div>
+
+    <div class="prayer-card active">
+      <h3>Dhuhr</h3>
+      <p class="prayer-time" data-prayer="dhuhr">--:--</p>
+    </div>
+
+    <div class="prayer-card">
+      <h3>Asr</h3>
+      <p class="prayer-time" data-prayer="asr">--:--</p>
+    </div>
+
+    <div class="prayer-card">
+      <h3>Maghrib</h3>
+      <p class="prayer-time" data-prayer="maghrib">--:--</p>
+    </div>
+
+    <div class="prayer-card">
+      <h3>Isha</h3>
+      <p class="prayer-time" data-prayer="isha">--:--</p>
+    </div>
+  </div>
+
+  <script>
+    // Fetch prayer times from Aladhan API for Orangevale, CA using Shia Ithna-Ashari method
+    async function fetchPrayerTimes() {
+      try {
+        // Masjid Al-Fatimah, Orangevale, CA coordinates
+        const latitude = 38.709;
+        const longitude = -121.2333;
+
+        // Method 0 = Shia Ithna-Ashari (Jafari)
+        const method = 0;
+
+        // Get current date in DD-MM-YYYY format
+        const now = new Date();
+        const day = String(now.getDate()).padStart(2, '0');
+        const month = String(now.getMonth() + 1).padStart(2, '0');
+        const year = now.getFullYear();
+        const dateString = `${day}-${month}-${year}`;
+
+        // Fetch from Aladhan API with coordinates and America/Los_Angeles timezone
+        const response = await fetch(
+          `https://api.aladhan.com/v1/timings/${dateString}?latitude=${latitude}&longitude=${longitude}&method=${method}&timezonestring=America/Los_Angeles`
+        );
+
+        if (!response.ok) {
+          throw new Error("Failed to fetch prayer times");
+        }
+
+        const data = await response.json();
+        const timings = data.data.timings;
+
+        // Extract and format times
+        const times = {
+          fajr: formatTime24to12(timings.Fajr),
+          sunrise: formatTime24to12(timings.Sunrise),
+          dhuhr: formatTime24to12(timings.Dhuhr),
+          asr: formatTime24to12(timings.Asr),
+          maghrib: formatTime24to12(timings.Maghrib),
+          isha: formatTime24to12(timings.Isha),
+        };
+
+        // Update DOM
+        updatePrayerTimesDisplay(times);
+        highlightCurrentPrayer(times);
+      } catch (error) {
+        console.error("Error fetching prayer times:", error);
+        // Keep showing placeholder times if fetch fails
+      }
+    }
+
+    function formatTime24to12(time24: string): string {
+      // API returns time in 24-hour format like "05:30"
+      const [hours24, minutes] = time24.split(":").map(Number);
+
+      const period = hours24 >= 12 ? "PM" : "AM";
+      const hours12 = hours24 % 12 || 12;
+
+      return `${hours12}:${minutes.toString().padStart(2, "0")} ${period}`;
+    }
+
+    function updatePrayerTimesDisplay(times: Record<string, string>) {
+      Object.entries(times).forEach(([prayer, time]) => {
+        const element = document.querySelector(`[data-prayer="${prayer}"]`);
+        if (element) {
+          element.textContent = time;
+        }
+      });
+    }
+
+    function highlightCurrentPrayer(times: Record<string, string>) {
+      // Get current time in California (America/Los_Angeles timezone)
+      const now = new Date();
+      const californiaTime = new Date(now.toLocaleString("en-US", { timeZone: "America/Los_Angeles" }));
+      const currentMinutes = californiaTime.getHours() * 60 + californiaTime.getMinutes();
+
+      const prayerOrder = [
+        "fajr",
+        "sunrise",
+        "dhuhr",
+        "asr",
+        "maghrib",
+        "isha",
+      ];
+
+      // Find the next upcoming prayer
+      let nextPrayer = "fajr"; // Default to Fajr if all prayers have passed
+
+      for (const prayer of prayerOrder) {
+        const time = times[prayer];
+        const prayerMinutes = timeToMinutes(time);
+
+        // If this prayer time is in the future, it's the next one
+        if (currentMinutes < prayerMinutes) {
+          nextPrayer = prayer;
+          break;
+        }
+      }
+
+      // Remove active class from all cards
+      document.querySelectorAll(".prayer-card").forEach((card) => {
+        card.classList.remove("active");
+      });
+
+      // Add active class to next prayer
+      const activeCard = document
+        .querySelector(`[data-prayer="${nextPrayer}"]`)
+        ?.closest(".prayer-card");
+      if (activeCard) {
+        activeCard.classList.add("active");
+      }
+    }
+
+    function timeToMinutes(time: string): number {
+      const [hourMin, period] = time.split(" ");
+      let [hours, minutes] = hourMin.split(":").map(Number);
+
+      if (period === "PM" && hours !== 12) hours += 12;
+      if (period === "AM" && hours === 12) hours = 0;
+
+      return hours * 60 + minutes;
+    }
+
+    // Initialize and update every hour (API updates daily)
+    fetchPrayerTimes();
+    setInterval(() => {
+      fetchPrayerTimes();
+    }, 3600000); // Update every hour
+  </script>
+</section>

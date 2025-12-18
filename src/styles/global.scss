@@ -1,0 +1,20 @@
+// Global Styles - Main entry point (import this in BaseLayout)
+@use "variables";
+@use "reset";
+@use "typography";
+
+// Component Styles
+@use "components/header";
+@use "./components/homehero";
+@use "./components/prayertimes";
+@use "./components/events";
+@use "./components/school";
+@use "./components/services";
+@use "./components/contact";
+@use "./components/cemetery";
+@use "./components/footer";
+@use "./components/support-us";
+@use "./components/about";
+@use "./components/resources";
+@use "./components/calendar";
+@use "./components/donation";

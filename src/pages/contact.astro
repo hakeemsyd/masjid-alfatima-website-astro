@@ -1,0 +1,66 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Contact Masjid Al-Fatimah - Get in Touch"
+  description="Contact Masjid Al-Fatimah for inquiries, consultation, donations, or spiritual needs. Located at 8149 Hazel Ave, Orangevale, CA. Phone: (916) 524-9911."
+>
+  <!-- Contact Section with Dark Theme -->
+  <section class="contact-page">
+    <div class="contact-page-container">
+      <h1>Contact Us</h1>
+      <p class="contact-page-intro">
+        Contact us for consultation, donations or any of your spiritual needs
+      </p>
+
+      <div class="contact-page-content-wrapper">
+        <!-- Contact Information Section -->
+        <div class="contact-page-info">
+          <div class="contact-page-location">
+            <h2>Al-Fatimah Sunday School</h2>
+            <div class="contact-page-details">
+              <a href="tel:+19165249911" class="contact-page-phone"
+                >+1 (916) 524-9911</a
+              >
+              <a href="mailto:Support@Alfatimah.Org" class="contact-page-email"
+                >General Inquiry | Support@Alfatimah.Org</a
+              >
+              <p class="contact-page-address">8149 Hazel Ave, Orangevale, CA 95662</p>
+            </div>
+          </div>
+
+          <div class="contact-page-location">
+            <h2>Make a Donation</h2>
+            <p class="donation-description">Help us make a difference today!</p>
+            <div class="contact-page-details">
+              <p class="zelle-info">
+                <strong>Zelle:</strong> lja786@gmail.com
+              </p>
+              <a
+                href="/donation"
+                class="btn-donate"
+                aria-label="Go to donation page"
+              >
+                Donate
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Map Section -->
+        <div class="contact-page-map">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15690.454936406777!2d-121.2333136225149!3d38.709072305345366!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x809ae04faf6e2881%3A0x3ff5e5444477367a!2s8149%20Hazel%20Ave%2C%20Orangevale%2C%20CA%2095662!5e0!3m2!1sen!2sus!4v1766010188416!5m2!1sen!2sus"
+            width="600"
+            height="450"
+            style="border:0;"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Masjid Al-Fatimah Location Map"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

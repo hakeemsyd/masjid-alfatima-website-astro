@@ -1,0 +1,62 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { Image } from "astro:assets";
+---
+
+<BaseLayout
+  title="Donate & Support Our Community | Masjid Al-Fatimah"
+  description="Support Masjid Al-Fatimah through Sadqa, Zakat, and Khums donations. Help us provide religious, educational, and social services to our community according to the Holy Quran and Sunnah."
+>
+  <!-- Support Us Section -->
+  <section class="support-us">
+    <div class="support-us-container">
+      <h1>Importance Of Supporting Community</h1>
+      <span class="quote">"Those who spend of their goods (In charity) by night and by day, in secret and in public, shall have their reward with their lord: on them shall be no fear, nor shall they grieve."</span>
+      <p class="verse">Holy Quran Chapter 2 Surah Baqarah verse 274</p>
+
+      <div class="support-cards">
+        <!-- Card 1: Ways to Support - Image Right -->
+        <div class="support-card">
+          <div class="card-content">
+            <h2>Ways to Support</h2>
+            <p>
+              Islam has great emphasis on helping people in need. This is why some contributions from our earning are obligatory such as Khums, Zakat/Fitrana, some are highly recommended like giving sadqa on specific days or occasions and some recommended to help us get closer to Allah Al-Mighty and ward off hardships.
+            </p>
+          </div>
+          <div class="card-image">
+            <Image
+              src="/images/webp/donate-1.webp"
+              alt="Ways to Support"
+              width={600}
+              height={400}
+              inferSize
+            />
+          </div>
+        </div>
+
+        <!-- Card 2: Non-profit Organization - Image Left -->
+        <div class="support-card">
+          <div class="card-image">
+            <Image
+              src="/images/webp/donate-2.webp"
+              alt="Non-profit Organization"
+              width={600}
+              height={400}
+              inferSize
+            />
+          </div>
+          <div class="card-content">
+            <h2>Non-profit Organization</h2>
+            <p>
+              Masjid Al-Fatimah as a non-profit organization solely runs on funding that we receive from our community member to fulfill its running expenses and offer programs. You can support us by paying your Sadqa, zakat, khums and by just donating to us directly to help our cause.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="donate-button-container">
+        <a href="/donation" class="btn-donate">Donate Now</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

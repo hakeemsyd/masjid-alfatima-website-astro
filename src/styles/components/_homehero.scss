@@ -1,0 +1,117 @@
+// Home Hero Section
+.home-hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2xl);
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+  padding: var(--space-2xl) var(--container-padding);
+
+  @media (max-width: 991px) {
+    flex-direction: column;
+    gap: var(--space-xl);
+    padding: var(--space-xl) var(--container-padding);
+  }
+
+  // Content (left side)
+  .content {
+    flex: 1;
+    max-width: 600px;
+
+    @media (max-width: 991px) {
+      max-width: 100%;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      color: var(--color-secondary);
+      margin-bottom: var(--space-lg);
+      line-height: 1.1;
+      font-weight: var(--font-weight-bold);
+
+      @media (max-width: 991px) {
+        font-size: clamp(1.75rem, 6vw, 2.5rem);
+      }
+    }
+
+    p {
+      font-size: var(--font-size-lg);
+      color: var(--color-text-light);
+      margin-bottom: var(--space-2xl);
+      line-height: 1.6;
+
+      @media (max-width: 991px) {
+        font-size: var(--font-size-base);
+      }
+    }
+
+    a {
+      display: inline-block;
+      padding: 1rem 2.5rem;
+      background-color: var(--color-primary);
+      color: var(--color-white);
+      font-weight: var(--font-weight-semibold);
+      font-size: var(--font-size-lg);
+      border-radius: var(--radius-md);
+      text-decoration: none;
+      transition: all var(--transition-base);
+      box-shadow: 0 4px 14px rgba(58, 191, 223, 0.3);
+
+      &:hover {
+        background-color: var(--color-primary-dark);
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(58, 191, 223, 0.4);
+      }
+
+      &:active {
+        transform: translateY(0);
+      }
+
+      @media (max-width: 991px) {
+        padding: 0.875rem 2rem;
+        font-size: var(--font-size-base);
+      }
+    }
+
+    // Dates section
+    .dates {
+      margin-top: var(--space-xl);
+      display: flex;
+      gap: var(--space-lg);
+
+      @media (max-width: 991px) {
+        align-items: center;
+      }
+    }
+
+    .date-value {
+      font-size: var(--font-size-md);
+      color: var(--color-text-light);
+      font-weight: var(--font-weight-normal);
+    }
+  }
+
+  // Image container (right side)
+  > div:last-child {
+    flex: 1;
+    max-width: 690px;
+
+    @media (max-width: 991px) {
+      max-width: 500px;
+      width: 100%;
+    }
+
+    @media (max-width: 640px) {
+      max-width: 100%;
+    }
+
+    img {
+      width: 100%;
+      height: auto;
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-md);
+    }
+  }
+}

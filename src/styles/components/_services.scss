@@ -1,0 +1,227 @@
+// Services Section
+.services {
+  max-width: 100%;
+  width: 100%;
+  margin: 0 auto;
+  padding: var(--space-3xl) 0;
+  background-color: var(--color-secondary);
+
+  @media (max-width: 991px) {
+    padding: var(--space-2xl) 0;
+  }
+
+  @media (max-width: 640px) {
+    padding: var(--space-xl) 0;
+  }
+
+  &-container {
+    width: 100%;
+  }
+
+  h2 {
+    font-size: clamp(2rem, 4vw, 2.5rem);
+    color: var(--color-white);
+    margin-bottom: var(--space-2xl);
+    text-align: center;
+    font-weight: var(--font-weight-bold);
+    padding: 0 var(--container-padding);
+
+    @media (max-width: 640px) {
+      margin-bottom: var(--space-xl);
+    }
+
+    span {
+      display: block;
+      font-size: clamp(1rem, 2vw, 1.25rem);
+      color: rgba(255, 255, 255, 0.8);
+      font-weight: var(--font-weight-normal);
+      margin-top: var(--space-sm);
+    }
+  }
+}
+
+.services-carousel-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: var(--space-lg);
+  padding: 0 var(--container-padding);
+
+  @media (max-width: 991px) {
+    gap: var(--space-md);
+  }
+
+  @media (max-width: 640px) {
+    gap: var(--space-sm);
+    padding: 0 var(--space-sm);
+  }
+}
+
+.services-carousel {
+  flex: 1;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+}
+
+.services-carousel-track {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.services-carousel-slide {
+  flex: 0 0 100%;
+  padding: 0 var(--space-sm);
+
+  @media (min-width: 768px) {
+    flex: 0 0 50%;
+  }
+
+  @media (min-width: 1024px) {
+    flex: 0 0 33.333%;
+  }
+}
+
+.service-card {
+  background: var(--color-white);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  transition: all var(--transition-base);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  &:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+  }
+
+  &-image {
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+
+    @media (max-width: 991px) {
+      height: 250px;
+    }
+
+    @media (max-width: 640px) {
+      height: 200px;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform var(--transition-base);
+    }
+
+    &:hover img {
+      transform: scale(1.05);
+    }
+  }
+
+  &-content {
+    padding: var(--space-xl);
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+
+    @media (max-width: 640px) {
+      padding: var(--space-lg);
+    }
+
+    h3 {
+      font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+      color: var(--color-secondary);
+      margin-bottom: var(--space-md);
+      font-weight: var(--font-weight-bold);
+      line-height: 1.2;
+    }
+
+    p {
+      font-size: var(--font-size-base);
+      color: var(--color-text-light);
+      line-height: 1.6;
+      flex: 1;
+
+      @media (max-width: 640px) {
+        font-size: var(--font-size-sm);
+      }
+    }
+  }
+}
+
+.services-carousel-btn {
+  background-color: var(--color-white);
+  border: 2px solid var(--color-border);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--transition-base);
+  flex-shrink: 0;
+  box-shadow: var(--shadow-sm);
+
+  &:hover {
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+    transform: scale(1.1);
+
+    svg {
+      color: var(--color-white);
+    }
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+
+  svg {
+    color: var(--color-secondary);
+    transition: color var(--transition-base);
+  }
+
+  @media (max-width: 640px) {
+    width: 40px;
+    height: 40px;
+
+    svg {
+      width: 20px;
+      height: 20px;
+    }
+  }
+}
+
+.services-carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-sm);
+  margin-top: var(--space-xl);
+  padding: 0 var(--container-padding);
+}
+
+.services-carousel-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: var(--color-border);
+  border: none;
+  cursor: pointer;
+  transition: all var(--transition-base);
+  padding: 0;
+
+  &:hover {
+    background-color: var(--color-primary);
+    transform: scale(1.2);
+  }
+
+  &.active {
+    background-color: var(--color-primary);
+    width: 32px;
+    border-radius: 6px;
+  }
+}

@@ -1,0 +1,104 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { Image } from "astro:assets";
+---
+
+<BaseLayout
+  title="Al-Fatimah School - Islamic Education & Sunday School | Masjid Al-Fatimah"
+  description="Al-Fatimah Sunday School offers Islamic education for ages 4-18. Learn Quran reading, Islamic studies, prayer, and values. Registration open from August. Classes from March to October and September to May."
+>
+  <!-- School Section -->
+  <section class="school">
+    <div class="school-container">
+      <h1>Al-Fatimah School</h1>
+
+      <div class="school-cards">
+        <!-- Card 1: Student Registration - Image Left -->
+        <div class="school-card">
+          <div class="card-image">
+            <Image
+              src="/images/webp/Pre-School-Student-Registration.webp"
+              alt="Student Registration"
+              width={600}
+              height={400}
+              inferSize
+            />
+          </div>
+          <div class="card-content">
+            <h3>Student Registration</h3>
+            <p>
+              The mission for MAF' Sunday school is to nurture the holistic growth
+              of individuals, families, and communities by creating
+              infrastructure, resources and services in pursuit of and following
+              the teachings of the Noble Qurʾān and Ahl al-Bayt (ʿa).
+            </p>
+            <p class="registration-info">Registration begins August every year</p>
+            <a href="#registration" class="btn-more-info">More Information</a>
+          </div>
+        </div>
+
+        <!-- Card 2: Al-Fatimah Sunday School - Image Right -->
+        <div class="school-card">
+          <div class="card-content">
+            <h3>Al-Fatimah Sunday School</h3>
+            <p>
+              The most complete gift of Allah is a life based on knowledge, for
+              knowledge gives meaning to faith, direction to actions, and clarity
+              to truth, shaping character, strengthening wisdom, and guiding a
+              person toward righteous living.
+            </p>
+            <a href="#registration" class="btn-more-info">More Information</a>
+          </div>
+          <div class="card-image">
+            <Image
+              src="/images/webp/Al-Fatimah-Sunday-School.webp"
+              alt="Al-Fatimah Sunday School"
+              width={600}
+              height={400}
+              inferSize
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Registration Information Section -->
+  <section id="registration" class="registration">
+    <div class="registration-container">
+      <h2>Registration Information</h2>
+
+      <div class="registration-content">
+        <div class="registration-card">
+          <h3>Student Registration</h3>
+
+          <div class="info-block">
+            <p>Sunday school is open from March to Oct every sunday from 10am – 3pm. From age 4 to age 18 any child can be registered.</p>
+          </div>
+
+          <div class="info-block">
+            <h4>Pre-School teaches</h4>
+            <ul>
+              <li>Islamic studies</li>
+              <li>Reading Quran</li>
+              <li>How to perform wudu and prayer.</li>
+              <li>understanding basic islamic rules</li>
+              <li>Understanding basic islamic values.</li>
+            </ul>
+          </div>
+
+          <div class="info-block">
+            <p><strong>Age Limit:</strong> For ages 4-9</p>
+            <p><strong>Pre-requisite:</strong> None</p>
+          </div>
+
+          <div class="info-block">
+            <p><strong>School Schedule:</strong> Open from September to May from 10am to 1:30 pm</p>
+          </div>
+
+          <a href="/contact" class="btn-register">Register Now</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

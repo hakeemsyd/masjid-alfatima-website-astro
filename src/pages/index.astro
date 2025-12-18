@@ -1,0 +1,24 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import HeroSection from "../components/homepage/herosection/HeroSection.astro";
+import PrayerTimes from "../components/homepage/prayertimes/PrayerTimes.astro";
+import Events from "../components/homepage/events/Events.astro";
+import School from "../components/homepage/school/School.astro";
+import Services from "../components/homepage/services/Services.astro";
+import Contact from "../components/homepage/contact/Contact.astro";
+import Cemetery from "../components/homepage/cemetery/Cemetery.astro";
+
+const title = "Masjid Al-Fatimah - Islamic Center";
+const description =
+  "Welcome to Masjid Al-Fatimah, a Islamic center serving our community with prayer times, events, and educational programs.";
+---
+
+<BaseLayout title={title} description={description}>
+  <HeroSection />
+  <PrayerTimes />
+  <Events />
+  <School />
+  <Services />
+  <Contact />
+  <Cemetery />
+</BaseLayout>

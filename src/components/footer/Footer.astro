@@ -1,0 +1,48 @@
+---
+import { Image } from "astro:assets";
+---
+
+<footer class="footer">
+  <div class="footer-content">
+    <div class="footer-container">
+      <!-- Logo Column -->
+      <div class="footer-column footer-logo">
+        <Image
+          src="/images/webp/Masjid-Al-Fatimah-Logo.png"
+          alt="Masjid Al-Fatimah Logo"
+          width={150}
+          height={150}
+          inferSize
+        />
+      </div>
+
+      <!-- Navigation Column -->
+      <div class="footer-column footer-nav">
+        <ul>
+          <li><a href="/home">Home</a></li>
+          <li><a href="/about">About Us</a></li>
+          <li><a href="/contact">Contact</a></li>
+          <li><a href="/privacy-policy">Privacy Policy</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact Column -->
+      <div class="footer-column footer-contact">
+        <p class="footer-address-title">Address</p>
+        <a href="tel:+19165349911" class="footer-phone">+1 (916) 534-9911</a>
+        <a href="mailto:Support@alfatimah.org" class="footer-email"
+          >General Inquiry | Support@alfatimah.org</a
+        >
+        <p class="footer-address">8149 Hazel Ave, Orangevale, CA 95662</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Divider Line -->
+  <div class="footer-divider"></div>
+
+  <!-- Copyright -->
+  <div class="footer-copyright">
+    <p>Copyright © 2025 Masjid Al-Fatimah. All Rights Reserved.</p>
+  </div>
+</footer>

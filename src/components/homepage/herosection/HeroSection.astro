@@ -1,0 +1,61 @@
+---
+import { Image } from "astro:assets";
+import HijriDatePkg from "hijri-date";
+
+// Hijri types
+const HijriDate = HijriDatePkg.default || HijriDatePkg;
+
+// Get current date
+const now = new Date();
+
+// Georgian date formatting
+const georgianDate = now.toLocaleDateString("en-US", {
+  weekday: "long",
+  year: "numeric",
+  month: "long",
+  day: "numeric",
+});
+
+// Hijri date formatting
+const hijri = new HijriDate();
+const hijriMonths = [
+  "Muharram",
+  "Safar",
+  "Rabi al-Awwal",
+  "Rabi al-Thani",
+  "Jumada al-Awwal",
+  "Jumada al-Thani",
+  "Rajab",
+  "Shaban",
+  "Ramadan",
+  "Shawwal",
+  "Dhul-Qadah",
+  "Dhul-Hijjah",
+];
+const hijriDate = `${hijriMonths[hijri.getMonthIndex()]} ${hijri.getDate()}, ${hijri.getFullYear()} AH`;
+---
+
+<section class="home-hero">
+  <div class="content">
+    <h1>Masjid Al-Fatimah</h1>
+    <p>
+      We practice and propagate Islam as a way of life as described by the
+      Prophet Muhammad PBUH and his house hold progeny (Ahlulbayt).
+    </p>
+    <a href="/donation">Donate</a>
+
+    <div class="dates">
+      <span class="date-value">{georgianDate}</span>
+      <span class="date-value">{hijriDate}</span>
+    </div>
+  </div>
+  <div>
+    <Image
+      src="/images/webp/hero-image.webp"
+      alt="Masjid Al-Fatimah building exterior"
+      width={690}
+      height={425}
+      inferSize
+    />
+  </div>
+</section>

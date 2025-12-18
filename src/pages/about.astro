@@ -1,0 +1,71 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { Image } from "astro:assets";
+---
+
+<BaseLayout
+  title="About Masjid Al-Fatimah - Our Mission & Resident Aalim"
+  description="Learn about Masjid Al-Fatimah's mission to serve the community through religious, educational, and social services. Meet Maulana Qaisar Abbas, our resident Aalim, dedicated to guiding our spiritual journey."
+>
+  <!-- About Section -->
+  <section class="about">
+    <div class="about-container">
+      <h1>Masjid Al-Fatimah</h1>
+
+      <div class="about-cards">
+        <!-- Card 1: Our Resident Aalim - Image Right -->
+        <div class="about-card">
+          <div class="card-content">
+            <h2>Maulana Qaisar Abbas - our Resident Aalim</h2>
+            <p>
+              As your Aaalim, I'm here to guide and serve you on your spiritual
+              journey. Our organization is committed to providing religious,
+              educational, and social services rooted in the teachings of the
+              Holy Quran and the Sunnah. Let's unite in faith and righteousness
+              as we strive to fulfill our mission.
+            </p>
+          </div>
+          <div class="card-image">
+            <Image
+              src="/images/webp/aalim.webp"
+              alt="Maulana Qaisar Abbas - Resident Aalim"
+              width={600}
+              height={400}
+              inferSize
+            />
+          </div>
+        </div>
+
+        <!-- Card 2: Our Mission - Full Width -->
+        <div class="about-card about-card--full">
+          <div class="card-content">
+            <h2>Our Mission</h2>
+            <p>
+              We Are Here To Serve Our Community Providing Religious,
+              Educational, And Social Services According To Holy Quran, And The
+              Sunnah Of Prophet Muhammad (Peace Be Upon Him And His Household)
+              And His Ahlul-Bayeit.
+            </p>
+            <p>
+              In addition to instilling a strong foundation of Islamic knowledge
+              and understanding, we prioritize character development, fostering
+              empathy, compassion, and social responsibility among our students.
+              Through interactive lessons, discussions, and community
+              engagement, we strive to cultivate well-rounded individuals who
+              embody the values of Islam in their daily lives.
+            </p>
+            <p>
+              Furthermore, our commitment extends beyond the classroom, as we
+              actively seek to create a supportive and inclusive environment
+              where all members of our community feel welcomed and valued.
+              Whether through educational workshops, social events, or
+              charitable initiatives, we aim to empower individuals to
+              positively impact society and uphold the principles of justice,
+              equality, and kindness.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

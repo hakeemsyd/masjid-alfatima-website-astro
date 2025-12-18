@@ -1,0 +1,23 @@
+{
+  "name": "alfatimah-mosque",
+  "type": "module",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "astro dev --host",
+    "start": "astro dev --host",
+    "build": "astro check && astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/vercel": "^9.0.2",
+    "astro": "^5.16.6",
+    "hijri-date": "^0.2.2"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.4",
+    "@astrojs/sitemap": "^3.2.2",
+    "sass": "^1.97.0",
+    "typescript": "^5.7.2"
+  }
+}

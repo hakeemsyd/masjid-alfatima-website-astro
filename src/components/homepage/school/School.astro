@@ -1,0 +1,58 @@
+---
+import { Image } from "astro:assets";
+---
+
+<section class="school">
+  <div class="school-container">
+    <h2>Al-Fatimah School</h2>
+
+    <div class="school-cards">
+      <!-- Card 1: Student Registration - Image Left -->
+      <div class="school-card">
+        <div class="card-image">
+          <Image
+            src="/images/webp/Pre-School-Student-Registration.webp"
+            alt="Student Registration"
+            width={600}
+            height={400}
+            inferSize
+          />
+        </div>
+        <div class="card-content">
+          <h3>Student Registration</h3>
+          <p>
+            The mission for MAF' Sunday school is to nurture the holistic growth
+            of individuals, families, and communities by creating
+            infrastructure, resources and services in pursuit of and following
+            the teachings of the Noble Qurʾān and Ahl al-Bayt (ʿa).
+          </p>
+          <p class="registration-info">Registration begins August every year</p>
+          <a href="/school#registration" class="btn-more-info">More Information</a>
+        </div>
+      </div>
+
+      <!-- Card 2: Al-Fatimah Sunday School - Image Right -->
+      <div class="school-card">
+        <div class="card-content">
+          <h3>Al-Fatimah Sunday School</h3>
+          <p>
+            The most complete gift of Allah is a life based on knowledge, for
+            knowledge gives meaning to faith, direction to actions, and clarity
+            to truth, shaping character, strengthening wisdom, and guiding a
+            person toward righteous living.
+          </p>
+          <a href="/school#registration" class="btn-more-info">More Information</a>
+        </div>
+        <div class="card-image">
+          <Image
+            src="/images/webp/Al-Fatimah-Sunday-School.webp"
+            alt="Al-Fatimah Sunday School"
+            width={600}
+            height={400}
+            inferSize
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,60 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { Image } from "astro:assets";
+---
+
+<BaseLayout
+  title="Donate to Masjid Al-Fatimah - Support Our Community"
+  description="Make a donation to Masjid Al-Fatimah and support our mission to serve the Muslim community through worship, education, and community programs. Donate via Zelle or PayPal."
+>
+  <!-- Donation Section -->
+  <section class="donation">
+    <div class="donation-container">
+      <h1>Make a Donation to Masjid Al-Fatimah</h1>
+
+      <div class="donation-hero-image">
+        <Image
+          src="/images/webp/Islamic-Donation.webp"
+          alt="Islamic Donation"
+          width={900}
+          height={200}
+        />
+      </div>
+
+      <div class="donation-cards">
+        <!-- Our Mission Card -->
+        <div class="donation-card">
+          <h2>Our Mission</h2>
+          <p>
+            At Al-Fatimah, our mission is to unite and support the Muslim community locally and globally. We strive to create a nurturing environment for worship, community involvement, scholarship, and education, rooted in the teachings of the Noble Quran and Ahl al-Bayt. We are committed to providing every individual with the opportunity to access knowledge, practice their faith, and cultivate their spiritual development.
+          </p>
+        </div>
+
+        <!-- Donation Methods Card -->
+        <div class="donation-card donation-methods">
+          <h2>We encourage you to donate with Zelle</h2>
+
+          <div class="donation-options">
+            <div class="donation-option">
+              <h3>Zelle</h3>
+              <span class="donation-info">lja786@gmail.com</span>
+            </div>
+
+            <div class="donation-option">
+              <h3>PayPal</h3>
+              <a
+                href="https://www.paypal.com/ncp/payment/VP2FYYEMD82EC"
+                class="btn-paypal"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Donate via PayPal - Takes you to PayPal payment page"
+              >
+                Donate with PayPal
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

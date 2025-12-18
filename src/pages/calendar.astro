@@ -1,0 +1,98 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { Image } from "astro:assets";
+
+const events = [
+  {
+    id: 1,
+    image: "/images/services/service-one.webp",
+    alt: "Hajj and Umrah Services",
+    title: "Hajj, Umrah",
+    description:
+      "Masjid Alfatimah offers expert guidance led by our Imam for a memorable Hajj and Umrah experience, assist with rituals",
+  },
+  {
+    id: 2,
+    image: "/images/services/service-two.webp",
+    alt: "Islamic Marriage Services",
+    title: "Islamic Marriage",
+    description:
+      "Islamic marriage services unite couples through rituals like the nikah contract, emphasizing mutual respect and family involvement",
+  },
+  {
+    id: 3,
+    image: "/images/services/service-three.webp",
+    alt: "Islamic Divorce Services",
+    title: "Islamic Divorce",
+    description:
+      "Islamic divorce services provide respectful dissolution of marriages, adhering to Islamic principles with guidance.",
+  },
+  {
+    id: 4,
+    image: "/images/services/service-four.webp",
+    alt: "Memorial and Burial Services",
+    title: "Memorial and Burial",
+    description:
+      "Memorial and burial services honor departed loved ones, providing dignified rituals in accordance with religious traditions",
+  },
+  {
+    id: 5,
+    image: "/images/services/service-five.webp",
+    alt: "Prison Quran Project",
+    title: "Prison Quran Project",
+    description:
+      "The prison Quran project distributes Islamic texts to inmates, fostering spiritual support within correctional facilities.",
+  },
+  {
+    id: 6,
+    image: "/images/services/service-six.webp",
+    alt: "Membership Services",
+    title: "Membership",
+    description:
+      "Membership offers individuals access to exclusive benefits, resources, and privileges within a community or organization.",
+  },
+  {
+    id: 7,
+    image: "/images/services/service-seven.webp",
+    alt: "Counseling Services",
+    title: "Counseling",
+    description:
+      "Counseling guided by our Imam for confidential support with various challenges, promoting healing in a compassionate environment",
+  },
+];
+---
+
+<BaseLayout
+  title="Calendar & Events - Masjid Al-Fatimah"
+  description="View upcoming events and Islamic calendar dates at Masjid Al-Fatimah. Stay connected with our community programs, religious services, and special occasions."
+>
+  <!-- Calendar Section -->
+  <section class="calendar">
+    <div class="calendar-container">
+      <h1>Calendar</h1>
+      <p class="calendar-description">Upcoming events at Masjid Al-Fatimah</p>
+
+      <div class="calendar-grid">
+        {
+          events.map((event) => (
+            <div class="calendar-card">
+              <div class="calendar-card-image">
+                <Image
+                  src={event.image}
+                  alt={event.alt}
+                  width={400}
+                  height={500}
+                  inferSize
+                />
+              </div>
+              <div class="calendar-card-content">
+                <h2>{event.title}</h2>
+                <p>{event.description}</p>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</BaseLayout>

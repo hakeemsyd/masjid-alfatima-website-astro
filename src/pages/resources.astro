@@ -1,0 +1,76 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { Image } from "astro:assets";
+---
+
+<BaseLayout
+  title="Islamic Resources - Educational Materials & Guides | Masjid Al-Fatimah"
+  description="Access Islamic resources including multimedia duas, supplications, Ziyarat, Quran recitations, and guides for new Muslims. Educational materials for spiritual growth and learning."
+>
+  <!-- Resources Section -->
+  <section class="resources">
+    <div class="resources-container">
+      <h1>Islamic Resources</h1>
+
+      <div class="resources-cards">
+        <!-- Card 1: Multimedia - Image Right -->
+        <div class="resources-card">
+          <div class="card-content">
+            <h2>Multimedia</h2>
+            <p>
+              A collection of videos for duas & supplications, Ziyarat, and Quran
+            </p>
+          </div>
+          <div class="card-image">
+            <Image
+              src="/images/webp/resource-1.webp"
+              alt="Multimedia Resources"
+              width={300}
+              height={300}
+            />
+          </div>
+        </div>
+
+        <!-- Card 2: New to Islam - Image Left -->
+        <div class="resources-card">
+          <div class="card-image">
+            <Image
+              src="/images/webp/resource-2.webp"
+              alt="New to Islam"
+              width={300}
+              height={300}
+            />
+          </div>
+          <div class="card-content">
+            <h2>New to Islam?</h2>
+            <p>
+              You must have a lot of do's and dont Questions. We are working on setting up an guide to make it easy for you.
+            </p>
+          </div>
+        </div>
+
+        <!-- Card 3: Mind Power - Image Right -->
+        <div class="resources-card">
+          <div class="card-content">
+            <h2>Mind power the ultimate</h2>
+            <p>
+              If you are interested in learning and understanding religion of Islam, it will be extremely important to study and learn on regular basis.
+            </p>
+          </div>
+          <div class="card-image">
+            <Image
+              src="/images/webp/resource-1.webp"
+              alt="Mind Power"
+              width={300}
+              height={300}
+            />
+          </div>
+        </div>
+      </div>
+
+      <div class="register-button-container">
+        <a href="/contact" class="btn-register">Register for Access</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

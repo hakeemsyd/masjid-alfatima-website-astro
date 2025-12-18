@@ -1,0 +1,199 @@
+// Donation Section
+.donation {
+  max-width: 100%;
+  width: 100%;
+  margin: 0 auto;
+  padding: var(--space-3xl) var(--container-padding);
+  background-color: var(--color-secondary);
+
+  @media (max-width: 991px) {
+    padding: var(--space-2xl) var(--container-padding);
+  }
+
+  @media (max-width: 640px) {
+    padding: var(--space-xl) var(--container-padding);
+  }
+
+  &-container {
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  h1 {
+    font-size: clamp(2rem, 4.5vw, 2.75rem);
+    color: var(--color-white);
+    margin-bottom: var(--space-3xl);
+    text-align: center;
+    font-weight: var(--font-weight-bold);
+    line-height: 1.2;
+
+    @media (max-width: 640px) {
+      margin-bottom: var(--space-2xl);
+    }
+  }
+
+  &-hero-image {
+    display: flex;
+    justify-content: center;
+    margin-bottom: var(--space-3xl);
+
+    @media (max-width: 640px) {
+      margin-bottom: var(--space-2xl);
+    }
+
+    img {
+      width: 100%;
+      max-width: 900px;
+      height: auto;
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-lg);
+
+      @media (max-width: 640px) {
+        border-radius: var(--radius-sm);
+      }
+    }
+  }
+
+  &-cards {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3xl);
+
+    @media (max-width: 640px) {
+      gap: var(--space-2xl);
+    }
+  }
+
+  &-card {
+    background: var(--color-white);
+    padding: var(--space-3xl);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-lg);
+    transition: all var(--transition-base);
+
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
+    }
+
+    @media (max-width: 991px) {
+      padding: var(--space-2xl);
+    }
+
+    @media (max-width: 640px) {
+      padding: var(--space-xl);
+    }
+
+    h2 {
+      font-size: clamp(1.75rem, 3.5vw, 2.25rem);
+      color: var(--color-secondary);
+      margin-bottom: var(--space-lg);
+      font-weight: var(--font-weight-bold);
+      line-height: 1.2;
+
+      @media (max-width: 640px) {
+        margin-bottom: var(--space-md);
+      }
+    }
+
+    p {
+      font-size: var(--font-size-base);
+      color: var(--color-text-light);
+      line-height: 1.7;
+
+      @media (max-width: 640px) {
+        font-size: var(--font-size-sm);
+      }
+    }
+  }
+
+  &-methods {
+    background: linear-gradient(135deg, var(--color-white) 0%, rgba(58, 191, 223, 0.05) 100%);
+  }
+
+  &-options {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-2xl);
+
+    @media (max-width: 640px) {
+      grid-template-columns: 1fr;
+      gap: var(--space-xl);
+    }
+  }
+
+  &-option {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-lg);
+    padding: var(--space-xl);
+    background: var(--color-white);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+    transition: all var(--transition-base);
+
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+    }
+
+    @media (max-width: 640px) {
+      padding: var(--space-lg);
+      gap: var(--space-md);
+    }
+
+    h3 {
+      font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+      color: var(--color-secondary);
+      font-weight: var(--font-weight-bold);
+      margin: 0;
+    }
+  }
+
+  &-info {
+    font-size: clamp(1rem, 2vw, 1.125rem);
+    color: var(--color-primary);
+    font-weight: var(--font-weight-semibold);
+    text-align: center;
+    padding: var(--space-md) var(--space-lg);
+    background: rgba(58, 191, 223, 0.1);
+    border-radius: var(--radius-sm);
+    border: 2px solid var(--color-primary);
+
+    @media (max-width: 640px) {
+      font-size: var(--font-size-base);
+      padding: var(--space-sm) var(--space-md);
+    }
+  }
+
+  .btn-paypal {
+    display: inline-block;
+    padding: 1.25rem 3rem;
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    font-weight: var(--font-weight-bold);
+    font-size: clamp(1rem, 2vw, 1.125rem);
+    border-radius: var(--radius-md);
+    text-decoration: none;
+    text-align: center;
+    transition: all var(--transition-base);
+    box-shadow: 0 6px 20px rgba(58, 191, 223, 0.4);
+
+    &:hover {
+      background-color: var(--color-primary-dark);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(58, 191, 223, 0.5);
+    }
+
+    &:active {
+      transform: translateY(-1px);
+    }
+
+    @media (max-width: 640px) {
+      padding: 1rem 2rem;
+      font-size: var(--font-size-base);
+    }
+  }
+}

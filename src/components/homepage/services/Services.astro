@@ -1,0 +1,232 @@
+---
+import { Image } from "astro:assets";
+
+const services = [
+  {
+    id: 1,
+    image: "/images/services/service-one.webp",
+    alt: "Hajj and Umrah Services",
+    title: "Hajj, Umrah",
+    description:
+      "Masjid Alfatimah offers expert guidance led by our Imam for a memorable Hajj and Umrah experience, assist with rituals",
+  },
+  {
+    id: 2,
+    image: "/images/services/service-two.webp",
+    alt: "Islamic Marriage Services",
+    title: "Islamic Marriage",
+    description:
+      "Islamic marriage services unite couples through rituals like the nikah contract, emphasizing mutual respect and family involvement",
+  },
+  {
+    id: 3,
+    image: "/images/services/service-three.webp",
+    alt: "Islamic Divorce Services",
+    title: "Islamic Divorce",
+    description:
+      "Islamic divorce services provide respectful dissolution of marriages, adhering to Islamic principles with guidance.",
+  },
+  {
+    id: 4,
+    image: "/images/services/service-four.webp",
+    alt: "Memorial and Burial Services",
+    title: "Memorial and Burial",
+    description:
+      "Memorial and burial services honor departed loved ones, providing dignified rituals in accordance with religious traditions",
+  },
+  {
+    id: 5,
+    image: "/images/services/service-five.webp",
+    alt: "Prison Quran Project",
+    title: "Prison Quran Project",
+    description:
+      "The prison Quran project distributes Islamic texts to inmates, fostering spiritual support within correctional facilities.",
+  },
+  {
+    id: 6,
+    image: "/images/services/service-six.webp",
+    alt: "Membership Services",
+    title: "Membership",
+    description:
+      "Membership offers individuals access to exclusive benefits, resources, and privileges within a community or organization.",
+  },
+  {
+    id: 7,
+    image: "/images/services/service-seven.webp",
+    alt: "Counseling Services",
+    title: "Counseling",
+    description:
+      "Counseling guided by our Imam for confidential support with various challenges, promoting healing in a compassionate environment",
+  },
+];
+---
+
+<section class="services">
+  <div class="services-container">
+    <h2>Services <span>Services & Activities in the Mosque</span></h2>
+
+    <div class="services-carousel-wrapper">
+      <button
+        class="services-carousel-btn services-carousel-btn-prev"
+        aria-label="Previous service"
+      >
+        <svg
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+        >
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+
+      <div class="services-carousel">
+        <div class="services-carousel-track">
+          {
+            services.map((service) => (
+              <div class="services-carousel-slide">
+                <div class="service-card">
+                  <div class="service-card-image">
+                    <Image
+                      src={service.image}
+                      alt={service.alt}
+                      width={400}
+                      height={500}
+                      inferSize
+                    />
+                  </div>
+                  <div class="service-card-content">
+                    <h3>{service.title}</h3>
+                    <p>{service.description}</p>
+                  </div>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+
+      <button
+        class="services-carousel-btn services-carousel-btn-next"
+        aria-label="Next service"
+      >
+        <svg
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+        >
+          <polyline points="9 18 15 12 9 6"></polyline>
+        </svg>
+      </button>
+    </div>
+
+    <div class="services-carousel-dots"></div>
+  </div>
+</section>
+
+<script>
+  const track = document.querySelector(
+    ".services-carousel-track"
+  ) as HTMLElement;
+  const slides = Array.from(
+    document.querySelectorAll(".services-carousel-slide")
+  );
+  const prevBtn = document.querySelector(
+    ".services-carousel-btn-prev"
+  ) as HTMLButtonElement;
+  const nextBtn = document.querySelector(
+    ".services-carousel-btn-next"
+  ) as HTMLButtonElement;
+  const dotsContainer = document.querySelector(
+    ".services-carousel-dots"
+  ) as HTMLElement;
+
+  let currentIndex = 0;
+  let slidesPerView = getSlidesPerView();
+  const totalSlides = slides.length;
+
+  function getSlidesPerView() {
+    if (window.innerWidth >= 1024) return 3;
+    if (window.innerWidth >= 768) return 2;
+    return 1;
+  }
+
+  function updateCarousel() {
+    const slideWidth = 100 / slidesPerView;
+    const offset = -(currentIndex * slideWidth);
+    track.style.transform = `translateX(${offset}%)`;
+
+    // Update dots
+    const dots = dotsContainer.querySelectorAll(".services-carousel-dot");
+    dots.forEach((dot, index) => {
+      dot.classList.toggle("active", index === currentIndex);
+    });
+  }
+
+  function createDots() {
+    dotsContainer.innerHTML = "";
+    const maxIndex = Math.max(0, totalSlides - slidesPerView);
+
+    for (let i = 0; i <= maxIndex; i++) {
+      const dot = document.createElement("button");
+      dot.classList.add("services-carousel-dot");
+      dot.setAttribute("aria-label", `Go to slide ${i + 1}`);
+      if (i === currentIndex) dot.classList.add("active");
+
+      dot.addEventListener("click", () => {
+        currentIndex = i;
+        updateCarousel();
+      });
+
+      dotsContainer.appendChild(dot);
+    }
+  }
+
+  function nextSlide() {
+    const maxIndex = Math.max(0, totalSlides - slidesPerView);
+    currentIndex = currentIndex >= maxIndex ? 0 : currentIndex + 1;
+    updateCarousel();
+  }
+
+  function prevSlide() {
+    const maxIndex = Math.max(0, totalSlides - slidesPerView);
+    currentIndex = currentIndex <= 0 ? maxIndex : currentIndex - 1;
+    updateCarousel();
+  }
+
+  prevBtn.addEventListener("click", prevSlide);
+  nextBtn.addEventListener("click", nextSlide);
+
+  // Auto-play
+  let autoplayInterval = setInterval(nextSlide, 5000);
+
+  // Pause on hover
+  const carouselWrapper = document.querySelector(".services-carousel-wrapper");
+  carouselWrapper?.addEventListener("mouseenter", () => {
+    clearInterval(autoplayInterval);
+  });
+
+  carouselWrapper?.addEventListener("mouseleave", () => {
+    autoplayInterval = setInterval(nextSlide, 5000);
+  });
+
+  // Handle window resize
+  window.addEventListener("resize", () => {
+    const newSlidesPerView = getSlidesPerView();
+    if (newSlidesPerView !== slidesPerView) {
+      slidesPerView = newSlidesPerView;
+      currentIndex = 0;
+      createDots();
+      updateCarousel();
+    }
+  });
+
+  // Initialize
+  createDots();
+  updateCarousel();
+</script>

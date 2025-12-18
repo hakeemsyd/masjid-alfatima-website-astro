@@ -1,0 +1,87 @@
+---
+// Header component with logo, navigation, and CTA button
+const navLinks = [
+  { href: "/school", label: "Al-Fatimah School" },
+  { href: "/support-us", label: "Donate" },
+  { href: "/about", label: "About Us" },
+  { href: "/resources", label: "Resources" },
+  { href: "/calendar", label: "Calendar" },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<header class="header">
+  <div class="header__container">
+    <!-- Logo -->
+    <a href="/" class="header__logo" aria-label="Masjid Al-Fatimah Home">
+      <img
+        src="/images/webp/Masjid-Al-Fatimah-Logo.png"
+        alt="Masjid Al-Fatimah Logo"
+        width="150"
+        height="60"
+      />
+    </a>
+
+    <!-- Desktop Navigation -->
+    <nav class="header__nav" aria-label="Main navigation">
+      <ul class="header__nav-list">
+        {
+          navLinks.map((link) => (
+            <li class="header__nav-item">
+              <a
+                href={link.href}
+                class={`header__nav-link ${currentPath === link.href ? "header__nav-link--active" : ""}`}
+                aria-current={currentPath === link.href ? "page" : undefined}
+              >
+                {link.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+
+    <!-- Contact Button -->
+    <div class="header__cta">
+      <a href="/contact" class="header__btn">Contact Us</a>
+    </div>
+
+    <!-- Mobile Menu Toggle -->
+    <button
+      class="header__menu-toggle"
+      aria-label="Toggle mobile menu"
+      aria-expanded="false"
+      aria-controls="mobile-menu"
+    >
+      <span class="header__menu-icon"></span>
+      <span class="header__menu-icon"></span>
+      <span class="header__menu-icon"></span>
+    </button>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div class="header__mobile-menu" id="mobile-menu" hidden>
+    <nav aria-label="Mobile navigation">
+      <ul class="header__mobile-nav-list">
+        {
+          navLinks.map((link) => (
+            <li class="header__mobile-nav-item">
+              <a
+                href={link.href}
+                class={`header__mobile-nav-link ${currentPath === link.href ? "header__mobile-nav-link--active" : ""}`}
+              >
+                {link.label}
+              </a>
+            </li>
+          ))
+        }
+        <li class="header__mobile-nav-item header__mobile-nav-item--cta">
+          <a href="/contact" class="header__mobile-btn">Contact Us</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<script src="../../scripts/navigation.ts"></script>
