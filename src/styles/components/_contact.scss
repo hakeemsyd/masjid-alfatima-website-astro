@@ -91,13 +91,13 @@
   &-phone,
   &-email {
     font-size: var(--font-size-base);
-    color: var(--color-primary);
+    color: var(--color-secondary);
     text-decoration: none;
     transition: all var(--transition-base);
     display: inline-block;
 
     &:hover {
-      color: var(--color-primary-dark);
+      color: var(--color-secondary-dark);
       transform: translateX(4px);
     }
 
@@ -310,13 +310,13 @@
   &-phone,
   &-email {
     font-size: var(--font-size-base);
-    color: var(--color-primary);
+    color: var(--color-secondary);
     text-decoration: none;
     transition: all var(--transition-base);
     display: inline-block;
 
     &:hover {
-      color: var(--color-primary-dark);
+      color: var(--color-secondary-dark);
       transform: translateX(4px);
     }
 
