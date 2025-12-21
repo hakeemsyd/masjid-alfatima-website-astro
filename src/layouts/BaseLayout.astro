@@ -24,9 +24,6 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="canonical" href={canonicalURL} />
 
-    <!-- Prevent Search Engine Indexing -->
-    <meta name="robots" content="noindex, nofollow" />
-
     <!-- Primary Meta Tags -->
     <title>{title}</title>
     <meta name="title" content={title} />
