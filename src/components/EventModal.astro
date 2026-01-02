@@ -1,0 +1,192 @@
+---
+// Event Modal Component - Shows event picture on page load
+---
+
+<div id="event-modal" class="event-modal">
+  <div class="event-modal-overlay"></div>
+  <div class="event-modal-content">
+    <button class="event-modal-close" aria-label="Close modal">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </button>
+    <div class="event-modal-image">
+      <img
+        src="/events/birthday-of-Imam-Ali-RA.jpg"
+        alt="Birthday of Imam Ali (RA) Event Announcement"
+        loading="eager"
+      />
+    </div>
+  </div>
+</div>
+
+<style>
+  .event-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+  }
+
+  .event-modal.active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .event-modal-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(4px);
+  }
+
+  .event-modal-content {
+    position: relative;
+    max-width: 90%;
+    max-height: 90vh;
+    background: white;
+    border-radius: 12px;
+    padding: 1rem;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    animation: slideIn 0.4s ease-out;
+  }
+
+  @keyframes slideIn {
+    from {
+      transform: scale(0.9) translateY(-20px);
+      opacity: 0;
+    }
+    to {
+      transform: scale(1) translateY(0);
+      opacity: 1;
+    }
+  }
+
+  .event-modal-close {
+    position: absolute;
+    top: -12px;
+    right: -12px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #fff;
+    border: 2px solid #333;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    z-index: 1;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  .event-modal-close:hover {
+    background-color: #f44336;
+    border-color: #f44336;
+    color: white;
+    transform: rotate(90deg);
+  }
+
+  .event-modal-close svg {
+    pointer-events: none;
+  }
+
+  .event-modal-image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-height: calc(90vh - 2rem);
+    overflow: hidden;
+    border-radius: 8px;
+  }
+
+  .event-modal-image img {
+    max-width: 100%;
+    max-height: calc(90vh - 2rem);
+    height: auto;
+    width: auto;
+    display: block;
+    object-fit: contain;
+  }
+
+  @media (max-width: 768px) {
+    .event-modal-content {
+      max-width: 95%;
+      max-height: 95vh;
+      padding: 0.5rem;
+    }
+
+    .event-modal-image {
+      max-height: calc(95vh - 1rem);
+    }
+
+    .event-modal-image img {
+      max-height: calc(95vh - 1rem);
+    }
+
+    .event-modal-close {
+      width: 36px;
+      height: 36px;
+      top: -10px;
+      right: -10px;
+    }
+  }
+</style>
+
+<script>
+  // Show modal on page load
+  document.addEventListener("DOMContentLoaded", () => {
+    const modal = document.getElementById("event-modal");
+    const closeButton = modal?.querySelector(".event-modal-close");
+    const overlay = modal?.querySelector(".event-modal-overlay");
+
+    if (!modal) return;
+
+    // Show modal after a short delay
+    setTimeout(() => {
+      modal.classList.add("active");
+      document.body.style.overflow = "hidden";
+    }, 500);
+
+    // Close modal function
+    const closeModal = () => {
+      modal.classList.remove("active");
+      document.body.style.overflow = "";
+    };
+
+    // Close on button click
+    closeButton?.addEventListener("click", closeModal);
+
+    // Close on overlay click
+    overlay?.addEventListener("click", closeModal);
+
+    // Close on ESC key
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && modal.classList.contains("active")) {
+        closeModal();
+      }
+    });
+  });
+</script>
